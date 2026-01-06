@@ -12,7 +12,7 @@ const COLUMN_MAPPING: { [key: string]: string[] } = {
   CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturacomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial', 'estruturacomercial', 'estrutura_comercial', 'estrutura comercial'],
   TelResidencial: ['telresidencial', 'tel_residencial', 'telefone_residencial', 'tel residencial', 'fone residencial'],
   TelCelular: ['telcelular', 'tel_celular', 'telefone_celular', 'tel celular', 'celular', 'fone celular'],
-  cidade: ['cidade', 'city', 'municipio', 'município']
+  cidade: ['cidade', 'city', 'municipio', 'município', 'cidaderesidencial', 'cidade_residencial', 'cidade residencial']
 };
 
 // Detecta o nome real da coluna baseado nas variações
