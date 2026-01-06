@@ -9,7 +9,7 @@ const COLUMN_MAPPING: { [key: string]: string[] } = {
   Nome: ['nome', 'name', 'razao social', 'razaosocial'],
   CPFCNPJ: ['cpfcnpj', 'cpf/cnpj', 'cpf_cnpj', 'cpf cnpj', 'documento'],
   Situacao: ['situacao', 'situação', 'status', 'situacao_cadastral'],
-  CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturascomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial'],
+  CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturascomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial', 'estruturacomercial', 'estrutura_comercial', 'estrutura comercial'],
   TelResidencial: ['telresidencial', 'tel_residencial', 'telefone_residencial', 'tel residencial', 'fone residencial'],
   TelCelular: ['telcelular', 'tel_celular', 'telefone_celular', 'tel celular', 'celular', 'fone celular'],
   cidade: ['cidade', 'city', 'municipio', 'município']
@@ -67,9 +67,15 @@ export const validateRequiredColumns = (headerMapping: { [key: string]: string }
   const requiredFields = ['Nome', 'CodigoEstrutura', 'Situacao'];
   const missing: string[] = [];
 
+  console.log('🔍 Colunas detectadas:', headerMapping);
+  console.log('📋 Colunas mapeadas:', Object.keys(headerMapping));
+
   requiredFields.forEach(field => {
     if (!headerMapping[field]) {
       missing.push(field);
+      console.log(`❌ Coluna obrigatória "${field}" não encontrada`);
+    } else {
+      console.log(`✅ Coluna "${field}" encontrada como "${headerMapping[field]}"`);
     }
   });
 
