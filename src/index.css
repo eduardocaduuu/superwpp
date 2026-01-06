@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-green text-gray-100;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-emerald-green/20 rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-emerald-green/10 hover:border-emerald-green/40;
+  }
+
+  .badge-active {
+    @apply px-3 py-1 rounded-full text-xs font-bold bg-neon-green/20 text-neon-green border border-neon-green/50;
+  }
+
+  .badge-inactive {
+    @apply px-3 py-1 rounded-full text-xs font-bold bg-gray-700/50 text-gray-400 border border-gray-600;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-green to-lime-green text-gray-900 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-green/50;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg glass-card text-emerald-green border-emerald-green/50 font-semibold transition-all duration-300 hover:bg-emerald-green/10;
+  }
+
+  .input-glass {
+    @apply glass-card px-4 py-3 text-gray-100 placeholder-gray-500 outline-none focus:border-emerald-green/60 focus:ring-2 focus:ring-emerald-green/20 transition-all;
+  }
+}
