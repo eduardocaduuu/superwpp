@@ -12,7 +12,7 @@ const COLUMN_MAPPING: { [key: string]: string[] } = {
   CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturacomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial', 'estruturacomercial', 'estrutura_comercial', 'estrutura comercial'],
   TelResidencial: ['telresidencial', 'tel_residencial', 'telefone_residencial', 'tel residencial', 'fone residencial'],
   TelCelular: ['telcelular', 'tel_celular', 'telefone_celular', 'tel celular', 'celular', 'fone celular'],
-  cidade: ['cidade', 'city', 'municipio', 'município', 'cidaderesidencial', 'cidade_residencial', 'cidade residencial']
+  cidade: ['cidade', 'city', 'municipio', 'município', 'cidaderesidencial', 'cidade_residencial', 'cidade residencial', 'cid_residencial', 'localidade', 'endereco_cidade', 'uf']
 };
 
 // Detecta o nome real da coluna baseado nas variações
@@ -51,7 +51,17 @@ const mapHeaders = (headers: string[]): { [key: string]: string } => {
 
 // Processa os dados brutos para o formato Reseller
 const processData = (rawData: any[], headerMapping: { [key: string]: string }): Reseller[] => {
-  return rawData.map(row => {
+  console.log('🔧 Processando dados. Mapeamento de cidade:', headerMapping.cidade);
+
+  return rawData.map((row, index) => {
+    const cidadeValue = row[headerMapping.cidade] || '';
+
+    if (index === 0) {
+      console.log(`📍 Primeira linha - Coluna cidade mapeada para: "${headerMapping.cidade}"`);
+      console.log(`📍 Valor da cidade na primeira linha: "${cidadeValue}"`);
+      console.log(`📍 Objeto row completo:`, row);
+    }
+
     const reseller: Reseller = {
       CodigoRevendedor: row[headerMapping.CodigoRevendedor] || '',
       Nome: row[headerMapping.Nome] || '',
@@ -60,7 +70,7 @@ const processData = (rawData: any[], headerMapping: { [key: string]: string }): 
       CodigoEstrutura: row[headerMapping.CodigoEstrutura] || '',
       TelResidencial: row[headerMapping.TelResidencial] || '',
       TelCelular: row[headerMapping.TelCelular] || '',
-      cidade: row[headerMapping.cidade] || '',
+      cidade: cidadeValue,
       isActive: isActiveStatus(row[headerMapping.Situacao] || '')
     };
 
