@@ -11,6 +11,8 @@ interface FiltersBarProps {
   onStructureChange: (value: string) => void;
   cities: string[];
   structures: string[];
+  onExport: () => void;
+  filteredCount: number;
 }
 
 export const FiltersBar: React.FC<FiltersBarProps> = ({
@@ -24,13 +26,15 @@ export const FiltersBar: React.FC<FiltersBarProps> = ({
   onStructureChange,
   cities,
   structures,
+  onExport,
+  filteredCount,
 }) => {
   return (
     <div className="w-full mb-8">
       <div className="glass-card p-6">
-        {/* Search Bar */}
-        <div className="mb-4">
-          <div className="relative">
+        {/* Search Bar and Export */}
+        <div className="mb-4 flex gap-3">
+          <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <svg
                 className="w-5 h-5 text-emerald-green"
@@ -54,6 +58,30 @@ export const FiltersBar: React.FC<FiltersBarProps> = ({
               className="input-glass w-full pl-12 pr-4"
             />
           </div>
+
+          {/* Export Button */}
+          <button
+            onClick={onExport}
+            className="btn-primary flex items-center gap-2 whitespace-nowrap"
+            title={`Exportar ${filteredCount} registro${filteredCount !== 1 ? 's' : ''} para Excel`}
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <span className="hidden md:inline">Exportar Excel</span>
+            <span className="md:hidden">Excel</span>
+            <span className="badge-active ml-1">{filteredCount}</span>
+          </button>
         </div>
 
         {/* Filters */}

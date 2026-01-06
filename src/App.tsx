@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Reseller, DashboardStats } from './types';
 import { normalizeString } from './utils/normalize';
+import { exportToExcel } from './utils/exportExcel';
 import { FileUploader } from './components/FileUploader';
 import { DashboardHeader } from './components/DashboardHeader';
 import { FiltersBar } from './components/FiltersBar';
@@ -100,6 +101,10 @@ function App() {
     setStructureFilter('');
   };
 
+  const handleExport = () => {
+    exportToExcel(filteredResellers, 'revendedores_filtrados');
+  };
+
   return (
     <div className="min-h-screen py-8 px-4 md:px-8">
       <div className="max-w-[1800px] mx-auto">
@@ -126,6 +131,8 @@ function App() {
               onStructureChange={setStructureFilter}
               cities={uniqueCities}
               structures={uniqueStructures}
+              onExport={handleExport}
+              filteredCount={filteredResellers.length}
             />
 
             {/* Grid de Revendedores */}
