@@ -9,7 +9,7 @@ const COLUMN_MAPPING: { [key: string]: string[] } = {
   Nome: ['nome', 'name', 'razao social', 'razaosocial'],
   CPFCNPJ: ['cpfcnpj', 'cpf/cnpj', 'cpf_cnpj', 'cpf cnpj', 'documento'],
   Situacao: ['situacao', 'situação', 'status', 'situacao_cadastral'],
-  CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura'],
+  CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturascomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial'],
   TelResidencial: ['telresidencial', 'tel_residencial', 'telefone_residencial', 'tel residencial', 'fone residencial'],
   TelCelular: ['telcelular', 'tel_celular', 'telefone_celular', 'tel celular', 'celular', 'fone celular'],
   cidade: ['cidade', 'city', 'municipio', 'município']
