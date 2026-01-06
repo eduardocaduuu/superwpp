@@ -33,10 +33,16 @@ const findColumnName = (headers: string[], variations: string[]): string | null 
 const mapHeaders = (headers: string[]): { [key: string]: string } => {
   const mapping: { [key: string]: string } = {};
 
+  console.log('📄 Headers originais da planilha:', headers);
+  console.log('📄 Headers normalizados:', headers.map(h => h.toLowerCase().trim()));
+
   Object.entries(COLUMN_MAPPING).forEach(([targetField, variations]) => {
     const found = findColumnName(headers, variations);
     if (found) {
       mapping[targetField] = found;
+      console.log(`✅ Mapeamento: "${targetField}" ← "${found}"`);
+    } else {
+      console.log(`❌ Campo "${targetField}" não encontrado. Variações procuradas:`, variations);
     }
   });
 
