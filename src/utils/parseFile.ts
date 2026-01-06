@@ -4,15 +4,41 @@ import { Reseller } from '../types';
 import { isActiveStatus, formatCPFCNPJ } from './normalize';
 
 // Mapeamento de colunas: aceita variações comuns (case-insensitive)
+// Atualizado em 2026-01-06 para incluir CidadeResidencial
 const COLUMN_MAPPING: { [key: string]: string[] } = {
   CodigoRevendedor: ['codigorevendedor', 'codigo_revendedor', 'cod_revendedor', 'codigo revendedor'],
   Nome: ['nome', 'name', 'razao social', 'razaosocial'],
   CPFCNPJ: ['cpfcnpj', 'cpf/cnpj', 'cpf_cnpj', 'cpf cnpj', 'documento'],
   Situacao: ['situacao', 'situação', 'status', 'situacao_cadastral'],
-  CodigoEstrutura: ['codigoestrutura', 'codigo_estrutura', 'cod_estrutura', 'codigo estrutura', 'estrutura', 'codigoestruturacomercial', 'codigoestrutura_comercial', 'codigo_estrutura_comercial', 'codigo estrutura comercial', 'estruturacomercial', 'estrutura_comercial', 'estrutura comercial'],
+  CodigoEstrutura: [
+    'codigoestrutura',
+    'codigo_estrutura',
+    'cod_estrutura',
+    'codigo estrutura',
+    'estrutura',
+    'codigoestruturacomercial',
+    'codigoestrutura_comercial',
+    'codigo_estrutura_comercial',
+    'codigo estrutura comercial',
+    'estruturacomercial',
+    'estrutura_comercial',
+    'estrutura comercial'
+  ],
   TelResidencial: ['telresidencial', 'tel_residencial', 'telefone_residencial', 'tel residencial', 'fone residencial'],
   TelCelular: ['telcelular', 'tel_celular', 'telefone_celular', 'tel celular', 'celular', 'fone celular'],
-  cidade: ['cidade', 'city', 'municipio', 'município', 'cidaderesidencial', 'cidade_residencial', 'cidade residencial', 'cid_residencial', 'localidade', 'endereco_cidade', 'uf']
+  cidade: [
+    'cidade',
+    'city',
+    'municipio',
+    'município',
+    'cidaderesidencial',
+    'cidade_residencial',
+    'cidade residencial',
+    'cid_residencial',
+    'localidade',
+    'endereco_cidade',
+    'uf'
+  ]
 };
 
 // Detecta o nome real da coluna baseado nas variações
