@@ -100,7 +100,7 @@ export const parseXLSX = (file: File): Promise<{ data: Reseller[]; errors: strin
         }
 
         // Mapeia headers
-        const headers = Object.keys(rawData[0]);
+        const headers = Object.keys(rawData[0] as Record<string, unknown>);
         const headerMapping = mapHeaders(headers);
 
         // Valida colunas obrigatórias
@@ -147,7 +147,7 @@ export const parseCSV = (file: File): Promise<{ data: Reseller[]; errors: string
           }
 
           // Mapeia headers
-          const headers = Object.keys(results.data[0]);
+          const headers = Object.keys(results.data[0] as Record<string, unknown>);
           const headerMapping = mapHeaders(headers);
 
           // Valida colunas obrigatórias
